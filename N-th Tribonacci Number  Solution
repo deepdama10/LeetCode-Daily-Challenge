@@ -1,0 +1,23 @@
+#Classic DP problem, let consider tribonacci(6) -> gives call to tribonacci(5),tribonacci(4),tribonacci(3) and the give calls to tribonacci(4),tribonacci(3),tribonacci(2)
+#It is clear that the sub smaller task and occuring again and again, hence we can use memoization.
+
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        #classic DP problem, can be solved with recursion with memoization.
+        arr=[-1]*38
+        arr[0]=0
+        arr[1]=1
+        arr[2]=1
+        def get_tribonacci(num,arr):
+            if (num<0):
+                return 0
+            if arr[num]!=-1:
+                return arr[num]
+            else:
+                arr[num]=get_tribonacci(num-1,arr)+get_tribonacci(num-2,arr)+get_tribonacci(num-3,arr)
+                return arr[num]
+        return(get_tribonacci(n,arr))
+        
+            
+            
+        
